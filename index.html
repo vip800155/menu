@@ -164,6 +164,10 @@
             50% {background-position: 100% 50%;}
             100% {background-position: 0% 50%;}
         }
+        .glow-btn.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -294,6 +298,13 @@
         }
         // Отправка заказа через серверную функцию
         document.getElementById('order-btn').addEventListener('click', async function() {
+            const orderBtn = document.getElementById('order-btn');
+            orderBtn.disabled = true;
+            orderBtn.classList.add('disabled');
+            setTimeout(() => {
+                orderBtn.disabled = false;
+                orderBtn.classList.remove('disabled');
+            }, 5000);
             const checked = Array.from(document.querySelectorAll('.menu-checkbox:checked')).map(cb => cb.value);
             const personalMessage = document.getElementById('personal-message').value.trim();
             const orderSuccess = document.getElementById('order-success');
