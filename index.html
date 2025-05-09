@@ -1,4 +1,4 @@
-<!-- v1.0.6 -->
+<!-- v1.0.7 -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -182,6 +182,10 @@
             <div id="shakshuka-photo" style="display:none; text-align:left; margin: 10px 0;">
                 <img src="shakshuka.webp" alt="Шакшука" style="max-width:350px; border-radius:12px; box-shadow:0 2px 12px #0002; display:block;">
             </div>
+            <label class="menu-item" id="waffles-item" style="cursor:pointer;"><input type="checkbox" class="menu-checkbox" value="Бельгийские вафли">Бельгийские вафли <span style='color:#888;font-size:0.9em;'>(нажмите, чтобы увидеть фото 📷)</span></label>
+            <div id="waffles-photo" style="display:none; text-align:left; margin: 10px 0;">
+                <img src="photo_food/viennese-waffles.jpg" alt="Бельгийские вафли" style="max-width:350px; border-radius:12px; box-shadow:0 2px 12px #0002; display:block;">
+            </div>
             <label class="menu-item"><input type="checkbox" class="menu-checkbox" value="Творожная запеканка">Творожная запеканка</label>
             <label class="menu-item"><input type="checkbox" class="menu-checkbox" value="Каша овсяная с орехами и мёдом">Каша овсяная с орехами и мёдом</label>
             <label class="menu-item"><input type="checkbox" class="menu-checkbox" value="Вареники с вишней">Вареники с вишней</label>
@@ -295,10 +299,18 @@
         const shakshukaPhoto = document.getElementById('shakshuka-photo');
         let photoVisible = false;
         shakshukaItem.addEventListener('click', function(e) {
-            // Не реагировать на клик по чекбоксу
             if (e.target.tagName.toLowerCase() === 'input') return;
             photoVisible = !photoVisible;
             shakshukaPhoto.style.display = photoVisible ? 'block' : 'none';
+        });
+        // Показ фото вафель
+        const wafflesItem = document.getElementById('waffles-item');
+        const wafflesPhoto = document.getElementById('waffles-photo');
+        let wafflesPhotoVisible = false;
+        wafflesItem.addEventListener('click', function(e) {
+            if (e.target.tagName.toLowerCase() === 'input') return;
+            wafflesPhotoVisible = !wafflesPhotoVisible;
+            wafflesPhoto.style.display = wafflesPhotoVisible ? 'block' : 'none';
         });
         // Обновление списка заказа
         function updateOrderList() {
