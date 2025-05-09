@@ -1,4 +1,4 @@
-<!-- v1.0.9 -->
+<!-- v1.0.10 -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -104,6 +104,98 @@
             }
         }
 
+        /* --- Мобильная адаптация --- */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                max-width: 100vw;
+                font-size: 1em;
+            }
+            h1 {
+                font-size: 1.4em;
+                margin-bottom: 20px;
+            }
+            .section-title {
+                font-size: 1.1em;
+                padding-bottom: 2px;
+                margin-bottom: 8px;
+            }
+            .section {
+                margin-bottom: 18px;
+            }
+            .menu-item {
+                padding-left: 8px;
+                font-size: 1em;
+                min-height: 38px;
+            }
+            .menu-checkbox {
+                width: 24px;
+                height: 24px;
+                margin-right: 10px;
+            }
+            #order-section {
+                flex-direction: column !important;
+                gap: 16px !important;
+                margin-top: 24px;
+                align-items: stretch !important;
+            }
+            #order-list {
+                padding: 10px 8px;
+                min-width: 0;
+                font-size: 1em;
+            }
+            #order-btn, .glow-btn {
+                padding: 16px 0;
+                font-size: 1.1em;
+                min-width: 0;
+                width: 90vw;
+                max-width: 90vw;
+                margin-left: 0;
+                border-radius: 12px;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .btn-underglow-wrapper {
+                width: 90vw;
+                margin-left: auto;
+                margin-right: auto;
+                justify-content: center;
+            }
+            img {
+                max-width: 98vw !important;
+                height: auto !important;
+                width: 90vw !important;
+                max-width: 350px !important;
+                min-width: 0 !important;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #site-version {
+                font-size: 9px;
+                margin-top: 30px;
+            }
+            #personal-message {
+                max-width: 100vw;
+                font-size: 1em;
+            }
+        }
+
+        /* Фото еды на больших экранах выравниваются по левому краю на уровне чекбоксов */
+        @media (min-width: 601px) {
+            .food-photo img {
+                display: block;
+                margin-left: 38px !important;
+                margin-right: 0 !important;
+                max-width: 350px;
+                width: 350px;
+                min-width: 0;
+                height: auto;
+                align-self: flex-start;
+            }
+        }
+
         .glow-btn {
             background: linear-gradient(90deg, #e74c3c, #ffb347, #e74c3c);
             background-size: 200% 200%;
@@ -179,15 +271,15 @@
             <label class="menu-item"><input type="checkbox" class="menu-checkbox" value="Оладьи">Оладьи</label>
             <label class="menu-item"><input type="checkbox" class="menu-checkbox" value="Сырники с вареньем">Сырники с вареньем</label>
             <label class="menu-item" id="shakshuka-item" style="cursor:pointer;"><input type="checkbox" class="menu-checkbox" value="Шакшука (яичница с помидорами)">Шакшука (яичница с помидорами) 📷</label>
-            <div id="shakshuka-photo" style="display:none; text-align:left; margin: 10px 0;">
+            <div id="shakshuka-photo" class="food-photo" style="display:none; text-align:left; margin: 10px 0;">
                 <img src="shakshuka.webp" alt="Шакшука" style="max-width:350px; border-radius:12px; box-shadow:0 2px 12px #0002; display:block;">
             </div>
             <label class="menu-item" id="waffles-item" style="cursor:pointer;"><input type="checkbox" class="menu-checkbox" value="Бельгийские вафли">Бельгийские вафли 📷</label>
-            <div id="waffles-photo" style="display:none; text-align:left; margin: 10px 0;">
+            <div id="waffles-photo" class="food-photo" style="display:none; text-align:left; margin: 10px 0;">
                 <img src="photo_food/viennese-waffles.jpg" alt="Бельгийские вафли" style="max-width:350px; border-radius:12px; box-shadow:0 2px 12px #0002; display:block;">
             </div>
             <label class="menu-item" id="zapekanka-item" style="cursor:pointer;"><input type="checkbox" class="menu-checkbox" value="Творожная запеканка">Творожная запеканка 📷</label>
-            <div id="zapekanka-photo" style="display:none; text-align:left; margin: 10px 0;">
+            <div id="zapekanka-photo" class="food-photo" style="display:none; text-align:left; margin: 10px 0;">
                 <img src="photo_food/zapekanka.jpg" alt="Творожная запеканка" style="max-width:350px; border-radius:12px; box-shadow:0 2px 12px #0002; display:block;">
             </div>
             <label class="menu-item"><input type="checkbox" class="menu-checkbox" value="Каша овсяная с орехами и мёдом">Каша овсяная с орехами и мёдом</label>
