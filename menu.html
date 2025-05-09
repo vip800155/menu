@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню ресторана</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+        }
+
+        .menu-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .menu-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .divider {
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Меню ресторана "Любимый муж"</h1>
+
+    <div class="section">
+        <h2 class="section-title">🍳 Завтраки</h2>
+        <div class="menu-item">Блины (с мёдом / сметаной / вареньем)</div>
+        <div class="menu-item">Оладьи</div>
+        <div class="menu-item">Сырники</div>
+        <div class="menu-item">Шакшука</div>
+        <div class="menu-item">Творожная запеканка</div>
+        <div class="menu-item">Каша овсяная с орехами и мёдом</div>
+        <div class="menu-item">Вареники с вишней</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h2 class="section-title">🥣 Супы</h2>
+        <div class="menu-item">Суп овощной</div>
+        <div class="menu-item">Гороховый суп</div>
+        <div class="menu-item">Куриный суп</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h2 class="section-title">🥘 Основные блюда</h2>
+        <div class="menu-item">Плов</div>
+        <div class="menu-item">Карбонара</div>
+        <div class="menu-item">Жареная курица с гарниром</div>
+        <div class="menu-item">Тушёное мясо с овощами</div>
+        <div class="menu-item">Котлеты (мясные / куриные / рыбные)</div>
+        <div class="menu-item">Макароны по-флотски</div>
+        <div class="menu-item">Филе лаврака — жареное, с лимоном. На гарнир рис с овощами</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h2 class="section-title">🍽 Гарниры</h2>
+        <div class="menu-item">Гречка</div>
+        <div class="menu-item">Рис</div>
+        <div class="menu-item">Картофельное пюре</div>
+        <div class="menu-item">Салаты (из свежих овощей, с тунцом, с яйцом и фасолью и др.)</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h2 class="section-title">🥟 Блюда из теста</h2>
+        <div class="menu-item">Пельмени</div>
+        <div class="menu-item">Вареники с ливером</div>
+        <div class="menu-item">Вареники с вишней</div>
+        <div class="menu-item">Блины с начинкой (мясо / грибы / творог)</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h2 class="section-title">🧂 Перекусы</h2>
+        <div class="menu-item">Селёдочка на чёрном хлебе с укропом и петрушкой</div>
+        <div class="menu-item">Бутерброды с капрезе</div>
+        <div class="menu-item">Фрукты, орехи</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h2 class="section-title">🍰 Десерты</h2>
+        <div class="menu-item">Сырники с вареньем</div>
+        <div class="menu-item">Блины (с мёдом / сметаной / вареньем)</div>
+        <div class="menu-item">Творог с фруктами и ягодами</div>
+    </div>
+</body>
+</html> 
