@@ -268,7 +268,7 @@
             </div>
         </div>
     </form>
-    <div style="text-align:center; margin-top:60px; font-size:10px; color:#bbb;">v1.0.2</div>
+    <div id="site-version" style="text-align:center; margin-top:60px; font-size:10px; color:#bbb;"></div>
     <script>
         // Подсветка выбранных пунктов
         function updateSelection() {
@@ -366,6 +366,20 @@
         // Инициализация
         updateSelection();
         updateOrderList();
+        // Автоматически подставлять версию сайта из комментария вверху
+        (function() {
+            const comments = Array.from(document.childNodes).filter(n => n.nodeType === Node.COMMENT_NODE);
+            let version = '';
+            for (const c of comments) {
+                if (c.nodeValue.trim().match(/^v[0-9.]+/)) {
+                    version = c.nodeValue.trim();
+                    break;
+                }
+            }
+            if (version) {
+                document.getElementById('site-version').textContent = version;
+            }
+        })();
     </script>
 </body>
 </html> 
