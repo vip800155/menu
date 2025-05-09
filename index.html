@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Меню ресторана "Любимый муж"</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <link rel="shortcut icon" href="favicon_io/favicon.ico">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
         
@@ -228,6 +233,10 @@
             <div>
                 <b>Ваш заказ:</b>
                 <div id="order-list"></div>
+                <div id="personal-message-block" style="display:none; margin-top:16px;">
+                    <label for="personal-message" style="font-size:1em; color:#444;">Личное сообщение для любимого повара:</label><br>
+                    <input type="text" id="personal-message" name="personal-message" maxlength="200" style="width:100%;max-width:350px;margin-top:6px;padding:7px 12px;border-radius:7px;border:1px solid #ddd;font-size:1em;">
+                </div>
             </div>
             <div class="btn-underglow-wrapper">
                 <button type="button" id="order-btn" class="glow-btn">Заказать</button>
@@ -269,10 +278,12 @@
         function updateOrderList() {
             const checked = Array.from(document.querySelectorAll('.menu-checkbox:checked')).map(cb => cb.value);
             document.getElementById('order-list').innerHTML = checked.length ? checked.map(item => `<div>${item}</div>`).join('') : '<span style="color:#aaa;">ничего не выбрано</span>';
+            document.getElementById('personal-message-block').style.display = checked.length ? 'block' : 'none';
         }
         // Отправка заказа через серверную функцию
         document.getElementById('order-btn').addEventListener('click', async function() {
             const checked = Array.from(document.querySelectorAll('.menu-checkbox:checked')).map(cb => cb.value);
+            const personalMessage = document.getElementById('personal-message').value.trim();
             if (!checked.length) {
                 alert('Пожалуйста, выберите хотя бы одно блюдо!');
                 return;
@@ -281,7 +292,7 @@
                 const res = await fetch('/api/order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ order: checked })
+                    body: JSON.stringify({ order: checked, message: personalMessage })
                 });
                 const data = await res.json();
                 if (data.ok) {
