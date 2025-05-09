@@ -242,6 +242,7 @@
                 <button type="button" id="order-btn" class="glow-btn">Заказать</button>
                 <div class="btn-underglow"></div>
             </div>
+            <div id="order-success" style="display:none; color:#27ae60; font-size:1.1em; margin-top:12px; font-weight:500;"></div>
         </div>
     </form>
     <script>
@@ -296,12 +297,15 @@
                 });
                 const data = await res.json();
                 if (data.ok) {
-                    alert('Заказ отправлен!');
+                    document.getElementById('order-success').textContent = 'Заказ отправлен!';
+                    document.getElementById('order-success').style.display = 'block';
                 } else {
-                    alert('Ошибка отправки заказа: ' + (data.error || ''));
+                    document.getElementById('order-success').textContent = 'Ошибка отправки заказа: ' + (data.error || '');
+                    document.getElementById('order-success').style.display = 'block';
                 }
             } catch (e) {
-                alert('Ошибка соединения с сервером.');
+                document.getElementById('order-success').textContent = 'Ошибка соединения с сервером.';
+                document.getElementById('order-success').style.display = 'block';
             }
         });
         // Инициализация
