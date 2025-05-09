@@ -239,11 +239,11 @@
                     <input type="text" id="personal-message" name="personal-message" maxlength="200" style="width:100%;max-width:350px;margin-top:6px;padding:7px 12px;border-radius:7px;border:1px solid #ddd;font-size:1em;">
                 </div>
             </div>
+            <div id="order-success" style="display:none; color:#27ae60; font-size:1.1em; margin-bottom:10px; font-weight:500;"></div>
             <div class="btn-underglow-wrapper">
                 <button type="button" id="order-btn" class="glow-btn">Заказать</button>
                 <div class="btn-underglow"></div>
             </div>
-            <div id="order-success" style="display:none; color:#27ae60; font-size:1.1em; margin-top:12px; font-weight:500;"></div>
         </div>
     </form>
     <div style="text-align:center; margin-top:60px; font-size:10px; color:#bbb;">v1.0.0</div>
@@ -287,8 +287,11 @@
         document.getElementById('order-btn').addEventListener('click', async function() {
             const checked = Array.from(document.querySelectorAll('.menu-checkbox:checked')).map(cb => cb.value);
             const personalMessage = document.getElementById('personal-message').value.trim();
+            const orderSuccess = document.getElementById('order-success');
+            orderSuccess.style.display = 'block';
             if (!checked.length) {
-                alert('Пожалуйста, выберите хотя бы одно блюдо!');
+                orderSuccess.textContent = 'Пожалуйста, выберите хотя бы одно блюдо!';
+                orderSuccess.style.color = '#e74c3c';
                 return;
             }
             try {
@@ -299,15 +302,15 @@
                 });
                 const data = await res.json();
                 if (data.ok) {
-                    document.getElementById('order-success').textContent = 'Заказ отправлен!';
-                    document.getElementById('order-success').style.display = 'block';
+                    orderSuccess.textContent = 'Заказ отправлен!';
+                    orderSuccess.style.color = '#27ae60';
                 } else {
-                    document.getElementById('order-success').textContent = 'Ошибка отправки заказа: ' + (data.error || '');
-                    document.getElementById('order-success').style.display = 'block';
+                    orderSuccess.textContent = 'Ошибка отправки заказа: ' + (data.error || '');
+                    orderSuccess.style.color = '#e74c3c';
                 }
             } catch (e) {
-                document.getElementById('order-success').textContent = 'Ошибка соединения с сервером.';
-                document.getElementById('order-success').style.display = 'block';
+                orderSuccess.textContent = 'Ошибка соединения с сервером.';
+                orderSuccess.style.color = '#e74c3c';
             }
         });
         // Инициализация
