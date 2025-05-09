@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  const { order } = req.body;
+  const { order, message } = req.body;
   if (!order || !Array.isArray(order) || !order.length) {
     return res.status(400).json({ error: 'Нет данных заказа' });
   }
@@ -11,7 +11,11 @@ export default async function handler(req, res) {
   if (!token) {
     return res.status(500).json({ error: 'Нет токена Telegram' });
   }
-  const text = 'Новый заказ:\n' + order.map(item => '- ' + item).join('\n');
+  let text = 'Новый заказ:\n' + order.map(item => '- ' + item).join('\n');
+  if (message) {
+    text += `\n\nЛичное сообщение для повара:\n${message}`;
+  }
+  console.log('TELEGRAM TEXT:', text);
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   try {
     const tgRes = await fetch(url, {
