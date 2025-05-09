@@ -1,4 +1,4 @@
-<!-- v1.0.0 -->
+<!-- v1.0.1 -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -246,7 +246,7 @@
             </div>
         </div>
     </form>
-    <div style="text-align:center; margin-top:60px; font-size:10px; color:#bbb;">v1.0.0</div>
+    <div style="text-align:center; margin-top:60px; font-size:10px; color:#bbb;">v1.0.1</div>
     <script>
         // Подсветка выбранных пунктов
         function updateSelection() {
@@ -289,6 +289,14 @@
             const personalMessage = document.getElementById('personal-message').value.trim();
             const orderSuccess = document.getElementById('order-success');
             orderSuccess.style.display = 'block';
+            const randomPhrases = [
+                'Повар уже суетится.',
+                'Повар говорит: ну ок',
+                'Повар: 😎 Профессионал на связи. Всё будет на высоте!',
+                'Повар: 🥹 Так приятно, что вы выбрали мою кухню…',
+                'Повар: 🔥🍳👨‍🍳🛎️',
+                'Повар: 🫡🔪'
+            ];
             if (!checked.length) {
                 orderSuccess.textContent = 'Пожалуйста, выберите хотя бы одно блюдо!';
                 orderSuccess.style.color = '#e74c3c';
@@ -302,7 +310,8 @@
                 });
                 const data = await res.json();
                 if (data.ok) {
-                    orderSuccess.textContent = 'Заказ отправлен!';
+                    const randomText = randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
+                    orderSuccess.textContent = 'Заказ отправлен! ' + randomText;
                     orderSuccess.style.color = '#27ae60';
                 } else {
                     orderSuccess.textContent = 'Ошибка отправки заказа: ' + (data.error || '');
