@@ -7,9 +7,12 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Нет данных заказа' });
   }
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID || '513392';
+  const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token) {
     return res.status(500).json({ error: 'Нет токена Telegram' });
+  }
+  if (!chatId) {
+    return res.status(500).json({ error: 'Нет chat_id Telegram' });
   }
   let text = 'Новый заказ:\n' + order.map(item => '- ' + item).join('\n');
   if (message) {
