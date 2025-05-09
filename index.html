@@ -1,4 +1,4 @@
-<!-- v1.0.3 -->
+<!-- v1.0.4 -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -262,6 +262,7 @@
                 </div>
             </div>
             <div id="order-success" style="display:none; color:#27ae60; font-size:1.1em; margin-bottom:10px; font-weight:500;"></div>
+            <div id="big-order-photo" style="display:none; text-align:center; margin-bottom:10px;"></div>
             <div class="btn-underglow-wrapper">
                 <button type="button" id="order-btn" class="glow-btn">Заказать</button>
                 <div class="btn-underglow"></div>
@@ -317,7 +318,10 @@
             const checked = Array.from(document.querySelectorAll('.menu-checkbox:checked')).map(cb => cb.value);
             const personalMessage = document.getElementById('personal-message').value.trim();
             const orderSuccess = document.getElementById('order-success');
+            const bigOrderPhoto = document.getElementById('big-order-photo');
             orderSuccess.style.display = 'block';
+            bigOrderPhoto.style.display = 'none';
+            bigOrderPhoto.innerHTML = '';
             const randomPhrases = [
                 'Повар уже суетится.',
                 'Повар говорит: ну ок',
@@ -332,6 +336,10 @@
                 'Повар: Тут помощник нужен — хомо сапиенс!',
                 'Пожелаем повару удачи.',
                 'Как говорится:  "Земля еще и потому щедра, что в мире существуют повара!… Благословенны их простые судьбы, А руки, будто помыслы чисты. Профессия у них добра по сути: Злой человек не встанет у плиты."'
+            ];
+            const bigOrderPhotos = [
+                'random_photo/chef1.jpeg',
+                'random_photo/chef2.jpeg'
             ];
             if (!checked.length) {
                 orderSuccess.textContent = 'Пожалуйста, выберите хотя бы одно блюдо!';
@@ -349,8 +357,13 @@
                     let randomText;
                     if (checked.length > 3) {
                         randomText = bigOrderPhrases[Math.floor(Math.random() * bigOrderPhrases.length)];
+                        const randomPhoto = bigOrderPhotos[Math.floor(Math.random() * bigOrderPhotos.length)];
+                        bigOrderPhoto.innerHTML = `<img src="${randomPhoto}" alt="chef" style="max-width:180px; border-radius:12px; box-shadow:0 2px 12px #0002; margin-top:10px;">`;
+                        bigOrderPhoto.style.display = 'block';
                     } else {
                         randomText = randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
+                        bigOrderPhoto.style.display = 'none';
+                        bigOrderPhoto.innerHTML = '';
                     }
                     orderSuccess.textContent = 'Заказ отправлен! ' + randomText;
                     orderSuccess.style.color = '#27ae60';
