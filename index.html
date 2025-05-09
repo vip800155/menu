@@ -1,4 +1,4 @@
-<!-- v1.0.4 -->
+<!-- v1.0.5 -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -358,8 +358,9 @@
                     if (checked.length > 3) {
                         randomText = bigOrderPhrases[Math.floor(Math.random() * bigOrderPhrases.length)];
                         const randomPhoto = bigOrderPhotos[Math.floor(Math.random() * bigOrderPhotos.length)];
-                        bigOrderPhoto.innerHTML = `<img src="${randomPhoto}" alt="chef" style="max-width:180px; border-radius:12px; box-shadow:0 2px 12px #0002; margin-top:10px;">`;
+                        bigOrderPhoto.innerHTML = `<img src="${randomPhoto}" alt="chef" style="max-width:180px; border-radius:12px; box-shadow:0 2px 12px #0002; margin-top:10px; display:block; text-align:left;">`;
                         bigOrderPhoto.style.display = 'block';
+                        bigOrderPhoto.style.textAlign = 'left';
                     } else {
                         randomText = randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
                         bigOrderPhoto.style.display = 'none';
