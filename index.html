@@ -27,6 +27,7 @@
             border-radius: 32px;
             box-shadow: 0 4px 32px #e74c3c22;
             overflow: hidden;
+            height: 80vh;
         }
         .left {
             flex: 1 1 0;
@@ -34,25 +35,35 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 48px 36px 48px 48px;
+            padding: 32px 24px 32px 24px;
             background: #fff;
             text-align: center;
+            min-height: 0;
+            height: 100%;
         }
-        .left h1, .welcome {
-            text-align: center;
+        .left-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .left h1 {
+        .left-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5em;
             color: #2c3e50;
-            margin-bottom: 24px;
+            margin: 0 0 18px 0;
             line-height: 1.1;
         }
-        .welcome {
+        .left-content .welcome {
             font-family: 'Playfair Display', serif;
             font-size: 1.3em;
             color: #333;
-            margin-bottom: 2em;
+            margin: 0 0 18px 0;
+        }
+        .left-content #site-version {
+            margin: 32px 0 0 0;
+            font-size: 10px;
+            color: #bbb;
         }
         .enter-btn {
             background: #e74c3c;
@@ -144,26 +155,32 @@
             border: none !important;
             display: inline-block !important;
         }
+        #site-version {
+            margin-top: auto;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="main-wrapper">
         <div class="left">
-            <h1>Ресторан<br>"Любимый муж"</h1>
-            <div class="welcome">Добро пожаловать!</div>
-            <script src="https://telegram.org/js/telegram-widget.js?7"
-                    data-telegram-login="Vip8NotifierBot"
-                    data-size="large"
-                    data-radius="8"
-                    data-auth-url="/tg-auth.html"
-                    data-request-access="write"
-                    data-userpic="false"
-                    data-lang="ru"
-                    async></script>
+            <div class="left-content">
+                <h1>Ресторан<br>"Любимый муж"</h1>
+                <div class="welcome">Добро пожаловать!</div>
+                <script src="https://telegram.org/js/telegram-widget.js?7"
+                        data-telegram-login="Vip8NotifierBot"
+                        data-size="large"
+                        data-radius="8"
+                        data-auth-url="/tg-auth.html"
+                        data-request-access="write"
+                        data-userpic="false"
+                        data-lang="ru"
+                        async></script>
+                <div id="site-version"></div>
+            </div>
             <div style="width:100%; display:flex; justify-content:center; margin-top:24px;">
                 <div id="telegram-login-button"></div>
             </div>
-            <div id="site-version" style="text-align:center; margin-top:auto; font-size:10px; color:#bbb;"></div>
         </div>
         <div class="right">
             <img id="start-img" class="start-image" src="" alt="Ресторан Любимый муж">
