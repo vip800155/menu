@@ -371,6 +371,11 @@
     </form>
     <div id="site-version" style="text-align:center; margin-top:60px; font-size:10px; color:#bbb;"></div>
     <script>
+        // Проверка авторизации Telegram
+        const tgUser = localStorage.getItem("telegram_user");
+        if (!tgUser) {
+            window.location.href = "/";
+        }
         // Подсветка выбранных пунктов
         function updateSelection() {
             document.querySelectorAll('.menu-checkbox').forEach(cb => {
